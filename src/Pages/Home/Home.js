@@ -1,9 +1,14 @@
 import React from 'react';
+import Advertised from './Advertised';
+import Categories from './Categories';
+import Slider from './Slider';
 
 const Home = () => {
     return (
         <div>
-            <h2>this is Home</h2>
+            <Slider></Slider>
+            <Advertised></Advertised>
+            <Categories></Categories>
         </div>
     );
 };
