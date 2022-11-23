@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Home = () => {
+const Footer = () => {
     return (
         <div>
-            <h2>this is Home</h2>
+            <h3>Footer</h3>
         </div>
     );
 };
 
-export default Home;
+export default Footer;
