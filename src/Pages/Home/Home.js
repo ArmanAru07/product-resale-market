@@ -1,15 +1,35 @@
 import React from 'react';
 import Advertised from './Advertised';
-import Categories from './Categories';
 import Slider from './Slider';
 import aboutImag from '../../Assets/image/about.jpg'
+import { Link, useLoaderData } from 'react-router-dom';
 
 const Home = () => {
+    const category = useLoaderData()
     return (
         <div>
             <Slider></Slider>
             <Advertised></Advertised>
-            <Categories></Categories>
+            <h1 className='lg:text-6xl text-center p-4'>Product Category</h1>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
+                {
+                    category.map(category => <p key={category._id}>
+                        <div className="card w-96 bg-base-100 shadow-xl">
+                            <figure className="px-10 pt-10">
+                                <img src={category.picture} alt="Shoes" className="rounded-xl" />
+                            </figure>
+                            <div className="card-body items-center text-center">
+                                <h2 className="card-title">{category.name}</h2>
+                                <div className="card-actions">
+                                    <Link to={`/category/${category._id}`}>
+                                        <button className="btn btn-primary">Product</button>
+                                    </Link>
+                                </div>
+                            </div>
+                        </div>
+                    </p>)
+                }
+            </div>
             {/* About section */}
             <div className="card lg:card-side bg-base-100 shadow-xl text-white">
                 <figure><img src={aboutImag} alt="Album" /></figure>
