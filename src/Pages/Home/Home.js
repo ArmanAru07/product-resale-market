@@ -10,7 +10,8 @@ const Home = () => {
         <div>
             <Slider></Slider>
             <Advertised></Advertised>
-            <h1 className='lg:text-6xl text-center p-4'>Product Category</h1>
+            <section className='rounded-xl mb-4'>
+            <h1 className='lg:text-5xl font-bold text-center text-yellow-500 p-4'>Product Category</h1>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
                 {
                     category.map(category => <p key={category._id}>
@@ -30,8 +31,9 @@ const Home = () => {
                     </p>)
                 }
             </div>
+            </section>
             {/* About section */}
-            <div className="card lg:card-side bg-base-100 shadow-xl text-white">
+            <div className="card lg:card-side bg-base-100 shadow-xl text-white mb-4">
                 <figure><img src={aboutImag} alt="Album" /></figure>
                 <div className="card-body">
                     <h2 className="card-title text-5xl font-bold ">Welcome to <br />Bike Hunter</h2>
