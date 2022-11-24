@@ -22,7 +22,7 @@ const Home = () => {
                             <div className="card-body items-center text-center">
                                 <h2 className="card-title">{category.name}</h2>
                                 <div className="card-actions">
-                                    <Link to={`/category/${category._id}`}>
+                                    <Link to={`/category/${category.name}`}>
                                         <button className="btn btn-primary">Product</button>
                                     </Link>
                                 </div>
