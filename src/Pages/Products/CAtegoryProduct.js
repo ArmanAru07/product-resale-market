@@ -5,7 +5,7 @@ const CAtegoryProduct = () => {
     const categoryProduct = useLoaderData()
     return (
         <div>
-                            <h2>{categoryProduct.categoryName}</h2>
+            <h1 className='lg:text-5xl font-bold text-center text-yellow-500 p-4'>Our Second-Hand Bike</h1>
 
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
                 {
@@ -16,6 +16,12 @@ const CAtegoryProduct = () => {
                             </figure>
                             <div className="card-body items-center text-center">
                                 <h2 className="card-title">{categoryProduct.name}</h2>
+                                <p>Location: {categoryProduct.location}</p>
+                                <p>Used Year: {categoryProduct.used_year}</p>
+                                <p>Orginal Price: {categoryProduct.orginal_price}</p>
+                                <p>Resale Price: {categoryProduct.resale_price}</p>
+                                <p>Saller Name: {categoryProduct.sallerName}</p>
+                                <p>Posted Time: {categoryProduct.post_date}</p>
                                 <div className="card-actions">
                                     <Link to={`/product/${categoryProduct._id}`}>
                                         <button className="btn btn-primary">Booking</button>
