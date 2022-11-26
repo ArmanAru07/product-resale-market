@@ -3,39 +3,54 @@ import React from 'react';
 const Blog = () => {
     return (
         <div>
-            <h2 className='lg:text-6xl text-center p-4'>Blog</h2>
+            <h2 className='lg:text-6xl text-center p-4 text-yellow-400'>Blog</h2>
             <div className="card lg:card-side bg-base-100 shadow-xl mb-4">
                 <div className="card-body">
-                    <h2 className="card-title">Difference between SQL and NoSQL</h2>
+                    <h2 className="card-title text-white">What are the different ways to manage a state in a React application?</h2>
                     <p>
+                        There are four main types of state you need to properly manage in your React apps:
                         <ul>
-                            <li>SQL databases are relational, NoSQL databases are non-relational.</li>
-                            <li>SQL databases use structured query language and have a predefined schema. NoSQL databases have dynamic schemas for unstructured data.</li>
-                            <li>SQL databases are vertically scalable, while NoSQL databases are horizontally scalable.</li>
-                            <li>SQL databases are table-based, while NoSQL databases are document, key-value, graph, or wide-column stores.</li>
-                            <li>SQL databases are better for multi-row transactions, while NoSQL is better for unstructured data like documents or JSON.</li>
+                            <li>Local state</li>
+                            <li>Global state</li>
+                            <li>Server state</li>
+                            <li>URLstate</li>
                         </ul>
                     </p>
                 </div>
             </div>
             <div className="card lg:card-side bg-base-100 shadow-xl mb-4">
                 <div className="card-body">
-                    <h2 className="card-title">What is JWT, and how does it work?</h2>
-                    <p>JWT, or JSON Web Token, is an open standard used to share security information between two parties — a client and a server. Each JWT contains encoded JSON objects, including a set of claims. JWTs are signed using a cryptographic algorithm to ensure that the claims cannot be altered after the token is issued.</p>
-                    <p>Secure: JWTs are digitally signed using either a secret (HMAC) or a public/private key pair (RSA or ECDSA) which safeguards them from being modified by the client or an attacker. Stored only on the client: You generate JWTs on the server and send them to the client. The client then submits the JWT with every request.</p>
+                    <h2 className="card-title text-white">How does prototypical inheritance work?</h2>
+                    <p>The Prototypal Inheritance is a feature in javascript used to add methods and properties in objects. It is a method by which an object can inherit the properties and methods of another object. Traditionally, in order to get and set the [[Prototype]] of an object, we use Object. getPrototypeOf and Object</p>
                 </div>
             </div>
             <div className="card lg:card-side bg-base-100 shadow-xl mb-4">
                 <div className="card-body">
-                    <h2 className="card-title">What is the difference between javascript and NodeJS?</h2>
-                    <p>JavaScript is a high-level programming language that makes our web pages and web applications dynamic and interactive by giving them the ability to think and act. JavaScript is a lightweight (easy to learn syntax) and object-oriented programming language whereas Node.js is a runtime environment built on google v8 engine and typically used to represent a list of objects and functions that JavaScript programs can access.
-                        <br />  In this post, we will walk you through what JavaScript and Node.js are, and then we will demonstrate the differences between JavaScript and Node.js.</p>
+                    <h2 className="card-title text-white">What is a unit test? Why should we write unit tests?</h2>
+                    <p>The main objective of unit testing is to isolate written code to test and determine if it works as intended. Unit testing is an important step in the development process, because if done correctly, it can help detect early flaws in code which may be more difficult to find in later testing stages..</p>
                 </div>
             </div>
             <div className="card lg:card-side bg-base-100 shadow-xl mb-4">
                 <div className="card-body">
-                    <h2 className="card-title">How does NodeJS handle multiple requests at the same time?</h2>
-                    <p>NodeJS receives multiple client requests and places them into EventQueue. NodeJS is built with the concept of event-driven architecture. NodeJS has its own EventLoop which is an infinite loop that receives requests and processes them.</p>
+                    <h2 className="card-title text-white">React vs. Angular vs. Vue?</h2>
+                    <h4><strong>Angular vs React</strong></h4>
+                    <p>If the choice you’re making is based on Angular vs React alone, then you’ll simply need to consider the pros and cons discussed for those libraries in this post. But overall, keep in mind that both libraries can be used for mobile and web apps, while Angular is generally better for more complex apps that are enterprise-ready.
+                        <br />
+                        React often requires extra modules and components, which keeps the core library small, but means there’s extra work involved when incorporating outside tools. Angular, on the other hand, is more of a full-fledged solution that doesn’t require extras like React often does, though it does have a steeper learning curve for its core compared to React.
+                        <br />
+                        React is more suitable for intermediate to advanced JavaScript developers who are familiar with concepts from ES6 and up, while Angular favors those same developers who are also familiar with TypeScript.</p>
+                    <h4><strong>React vs Vue</strong></h4>
+                    <p>The choice between React vs Vue is often debated and it’s not an easy one. Vue has a vibrant and ever-growing community and has taken over popularity vs. React in many respects. React developers are still churning out lots of new components and extras, so there’s no sign that React is on the decline either.
+                        <br />
+                        Vue is generally more suited to smaller, less complex apps and is easier to learn from scratch compared to React. Vue can be easier to integrate into new or existing projects and many feel its use of HTML templates along with JSX is an advantage.
+                        <br />
+                        Overall, Vue might be the best choice if you’re a newer developer and not as familiar with advanced JavaScript concepts, while React is quite well suited for experienced programmers and developers who have worked with object-oriented JavaScript, functional JavaScript, and similar concepts.</p>
+                    <h4><strong>Angular vs Vue</strong></h4>
+                    <p>In most cases, you probably wouldn’t be deciding between only Angular and Vue. They are vastly different libraries with very different feature sets and learning curves. Vue is the clear choice for less experienced developers, and Angular would be preferred for those working on larger apps.
+                        <br />
+                        A large library like Angular would require more diligence in keeping up with what’s new, while Vue would be less demanding in this regard and the fact that the two most recent major releases of Vue are in separate repositories helps.
+                        <br />
+                        It should also be noted that Vue was created by a developer who formerly worked on Angular for Google, so that’s another thing to keep in mind, though that wouldn’t have a huge impact on your decision.</p>
                 </div>
             </div>
         </div>
