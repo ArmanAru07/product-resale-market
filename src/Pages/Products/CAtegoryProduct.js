@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link, useLoaderData } from 'react-router-dom';
+import {  useLoaderData } from 'react-router-dom';
+import BookingModal from './BookingModal';
 
 const CAtegoryProduct = () => {
     const categoryProduct = useLoaderData()
@@ -23,15 +24,14 @@ const CAtegoryProduct = () => {
                                 <p>Saller Name: {categoryProduct.sallerName}</p>
                                 <p>Posted Time: {categoryProduct.post_date}</p>
                                 <div className="card-actions">
-                                    <Link to={`/product/${categoryProduct._id}`}>
-                                        <button className="btn btn-primary">Booking</button>
-                                    </Link>
+                                        <label htmlFor="booking-modal" className="btn btn-primary">Booking</label>     
                                 </div>
                             </div>
                         </div>
                     </p>)
                 }
             </div>
+            <BookingModal></BookingModal>
         </div>
     );
 };

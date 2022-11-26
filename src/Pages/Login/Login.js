@@ -56,7 +56,7 @@ const Login = () => {
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                         {/* login form */}
                         {/* o */}
-                        <form nSubmit={handleLogin} className="card-body">
+                        <form onSubmit={handleLogin} className="card-body">
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text text-white">Email</span>

@@ -1,7 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
 const Header = () => {
+
+    const { user, logOut } = useContext(AuthContext);
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => console.error(error))
+    }
+
     return (
         <div className="navbar bg-base-100 text-yellow-100">
             <div className="navbar-start">
@@ -11,7 +21,7 @@ const Header = () => {
                     </label>
                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                         <li><a href='/'>Item 1</a></li>
-                        <li><a href='/'>Item 1</a></li>
+                        <li><a href='/blog'>Blog</a></li>
                         <li tabIndex={0}>
                             <a className="justify-between">
                                 Category
@@ -32,6 +42,7 @@ const Header = () => {
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">
                     <li><a href='/'>Item 1</a></li>
+                    <li><a href='/blog'>Blog</a></li>
                     <li tabIndex={0}>
                         <a>
                             Category
@@ -43,15 +54,18 @@ const Header = () => {
                             <li><a >SUZUKI</a></li>
                         </ul>
                     </li>
-                    <li><Link to={'/login'}>Login</Link></li>
-                    <li><Link to={'/register'}>Register</Link></li>
+
                 </ul>
             </div>
+
+
             <div className="navbar-end">
+                <li><Link to={'/login'}>Login</Link></li>
+                <li><Link to={'/register'}>Register</Link></li>
                 <div className="dropdown dropdown-end">
                     <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                         <div className="w-10 rounded-full">
-                            <img alt='' src="https://placeimg.com/80/80/people" />
+                            <img alt='' src={user?.photoURL} />
                         </div>
                     </label>
                     <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
@@ -62,7 +76,7 @@ const Header = () => {
                             </a>
                         </li>
                         <li><a href='..'>Settings</a></li>
-                        <li><a href='..'>Logout</a></li>
+                        <li><a onClick={handleLogOut} href='/'>Logout</a></li>
                     </ul>
                 </div>
             </div>
