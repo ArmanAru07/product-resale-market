@@ -1,3 +1,4 @@
+import { data } from 'autoprefixer';
 import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
@@ -5,7 +6,7 @@ import useTitle from '../../Hook/useTitle'
 const Register = () => {
 
     const [error, setError] = useState('');
-    const { createUser } = useContext(AuthContext)
+    const { createUser, updateUser, logOut } = useContext(AuthContext)
     const navigate = useNavigate();
     useTitle('Register');
 
@@ -14,9 +15,10 @@ const Register = () => {
         const form = event.target;
         const name = form.name.value;
         const image = form.img.value;
+        const userCategory= form.userCategory.value;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(name, image, email, password);
+        console.log(name, image, userCategory, email, password);
 
         createUser(email, password)
             .then(result => {
@@ -24,7 +26,14 @@ const Register = () => {
                 console.log(user);
                 setError('');
                 form.reset();
-                navigate('/login');
+                const userInfo = {
+                    displayName: data.name
+                }
+                updateUser(userInfo)
+                .then(() =>{
+                    saveUser();
+                })
+                .catch(err => console.log(err));
             })
             .catch(error => {
                 console.error(error)
@@ -33,20 +42,30 @@ const Register = () => {
     }
 
     //save user information in database
-    const saveUser = (name, email) =>{
-        const user = {name, email};
+    const saveUser = (name, email) => {
+        const user = { name, email };
         fetch('http://localhost:5000/users', {
             method: 'POST',
             headers: {
-                'content-type' : 'application/json'
+                'content-type': 'application/json'
             },
             body: JSON.stringify(user)
         })
-        .then(res => res.json())
-        .then(data =>{
-            console.log( 'saveUser', data);
-            navigate('/login');
-        })
+            .then(res => res.json())
+            .then(data => {
+                if(data.acknowledged){
+                    alert("Successfully Registered")
+                }
+                console.log('saveUser', data);
+                logOut().then(()=>{
+                    navigate('/login');
+                }).catch((error)=>{
+                    console.log(error.message)
+                }) 
+            })
+            .catch((error)=>{
+                console.error('Error:', error);
+            });
     }
 
     return (
@@ -68,6 +87,15 @@ const Register = () => {
                                     <span className="label-text text-white">image url</span>
                                 </label>
                                 <input name='img' type="text" placeholder="image url" className="input input-bordered" required />
+                            </div>
+                            <div className="form-control">
+                                <label htmlFor="userCategory" className="label">
+                                    <span className="label-text">User Category</span>
+                                </label>
+                                <select name="userCategory" className="input input-bordered w-full max-w-xs" id="userCategory">
+                                    <option value="YAMAHA">Buyer</option>
+                                    <option value="HONDA">Seller</option>
+                                </select>
                             </div>
                             <div className="form-control">
                                 <label className="label">

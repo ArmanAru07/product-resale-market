@@ -71,6 +71,10 @@ const router = createBrowserRouter([
                 element:<AllBuyers></AllBuyers>
             }
         ]
+    },
+    {
+        path:"*",element:<div>Error 404</div>
+
     }
 ]);
 

@@ -22,13 +22,29 @@ const AddProduct = () => {
             img, name, categoryName, categoryID, location, resale_price, orginal_price, used_year, post_date, sallerName
         }
         console.log(insertProduct);
+
+        fetch('http://localhost:5000/add-product', {
+
+            method: 'POST', // or 'PUT'
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(insertProduct)
+        }).then((res) => res.json())
+            .then((data) => {
+                console.log(data);
+                element.reset();
+            }).catch((error) => {
+                console.error(error.message);
+            })
+
     }
 
     return (
 
         <div className="hero ">
             <div className='hero-content'>
-                <h1 className='className="text-center text-5xl font-bold text-yellow-400 p-4'>Add A Product</h1>
+                <h1 className='className="text-center text-5xl font-bold text-yellow-400 p-4'>Add Product</h1>
 
                 <div className='card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100'>
                     {/*  */}
