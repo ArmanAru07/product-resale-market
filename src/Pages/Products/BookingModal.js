@@ -4,7 +4,6 @@ import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 const BookingModal = ({product, setProduct}) => {
 
     const { user } = useContext(AuthContext);
-
     const {name, resale_price} = product;
 
     const handleBooking = event => {
@@ -16,7 +15,7 @@ const BookingModal = ({product, setProduct}) => {
         const phone = form.phone.value;
         const location = form.location.value;
 
-        const booking = {
+        const bookings = {
             productName: name,
             resale_price: price,
             customerName,
@@ -24,7 +23,29 @@ const BookingModal = ({product, setProduct}) => {
             phone,
             location
         }
-        console.log(booking);
+        
+        fetch('http://localhost:5000/bookings', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(bookings)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.acknowledged) {
+                    setProduct(null);
+                    alert('successfully booking');
+                
+                }
+                else{
+                    alert('You already booked this item');
+                }
+
+            })
+
+        
     }
         
 
