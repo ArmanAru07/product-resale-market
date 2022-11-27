@@ -1,9 +1,7 @@
 import React from 'react';
-import {  useLoaderData } from 'react-router-dom';
-import BookingModal from './BookingModal';
 
-const CAtegoryProduct = () => {
-    const categoryProduct = useLoaderData()
+const CAtegoryProduct = ({categoryProduct, setProduct}) => {
+    console.log(categoryProduct);
     return (
         <div>
             <h1 className='lg:text-5xl font-bold text-center text-yellow-500 p-4'>Our Second-Hand Bike</h1>
@@ -24,14 +22,17 @@ const CAtegoryProduct = () => {
                                 <p>Saller Name: {categoryProduct.sallerName}</p>
                                 <p>Posted Time: {categoryProduct.post_date}</p>
                                 <div className="card-actions">
-                                        <label htmlFor="booking-modal" className="btn btn-primary">Booking</label>     
+                                        <label 
+                                        htmlFor="booking-modal" 
+                                        className="btn btn-primary"
+                                        onClick={()=>setProduct(categoryProduct)}
+                                        >Book Now</label>     
                                 </div>
                             </div>
                         </div>
                     </p>)
                 }
             </div>
-            <BookingModal></BookingModal>
         </div>
     );
 };

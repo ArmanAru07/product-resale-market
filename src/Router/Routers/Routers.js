@@ -6,6 +6,7 @@ import CAtegoryProduct from "../../Pages/Products/CAtegoryProduct";
 import Login from "../../Pages/Login/Login";
 import Register from "../../Pages/Register/Register";
 import Blog from "../../Pages/Blog/Blog";
+import AvailableProduct from "../../Pages/Products/AvailableProduct";
 
 const router = createBrowserRouter([
     {
@@ -24,7 +25,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/category/:name',
-                element: <CAtegoryProduct></CAtegoryProduct>,
+                element:<AvailableProduct></AvailableProduct>,
                 loader: ({params}) => fetch(`http://localhost:5000/products/${params.name}`)
             },
             {
