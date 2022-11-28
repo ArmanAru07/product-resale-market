@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 
 const AddProduct = () => {
+
+    const { user } = useContext(AuthContext);
+
 
     const handelAddProduct = (event) => {
         event.preventDefault();
@@ -15,11 +19,12 @@ const AddProduct = () => {
         const used_year = element.used_year.value;
         const post_date = element.post_date.value;
         const sallerName = element.sallerName.value;
+        const email = element.email.value;
 
 
 
         const insertProduct = {
-            img, name, categoryName, categoryID, location, resale_price, orginal_price, used_year, post_date, sallerName
+            img, name, user, email, categoryName, categoryID, location, resale_price, orginal_price, used_year, post_date, sallerName
         }
         console.log(insertProduct);
 
@@ -94,6 +99,9 @@ const AddProduct = () => {
 
                         <div className="form-control w-full max-w-xs m-2">
                             <input type="text" name='sallerName' placeholder="Saller Name" className="input input-bordered w-full max-w-xs" required />
+                        </div>
+                        <div className="form-control w-full max-w-xs m-2">
+                            <input type="text" name='email' defaultValue={user?.email} disabled placeholder="Your email" className="input input-bordered w-full max-w-xs" required />
                         </div>
 
                         <button className="btn btn-outline btn-primary m-4">Add Product</button>

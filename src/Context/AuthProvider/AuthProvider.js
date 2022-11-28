@@ -9,6 +9,9 @@ const AuthProvider = ({ children }) => {
 
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [adding, setadding] = useState(null);
+
+   
 
     //create user
     const createUser = (email, password) => {
@@ -27,9 +30,19 @@ const AuthProvider = ({ children }) => {
     }
 
     //update user
-    const updateUser = (userInfo) =>{
-        return updateProfile(user, userInfo);
+    const UserUpdate = (name, category, email) =>{
+        if(email === 'jogkar-jiku@gmail.com'){
+            category = 'Admin';
+        }
+        
+        console.log(email);
+        return updateProfile(auth.currentUser, {
+            displayName: name, 
+            photoURL: category
+          })    
     }
+    
+
 
     //logOut
     const logOut = () => {
@@ -40,7 +53,7 @@ const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
-            console.log(currentUser);
+            
             setUser(currentUser);
             setLoading(false);
         });
@@ -56,7 +69,9 @@ const AuthProvider = ({ children }) => {
         providerLogin,
         signIn,
         logOut,
-        updateUser
+        UserUpdate,
+        adding,
+        setadding
     }
 
     return (

@@ -1,7 +1,7 @@
 import React from 'react';
-import { Link, useLoaderData } from 'react-router-dom';
+import { useLoaderData } from 'react-router-dom';
 
-const Products = () => {
+const Products = ({setProduct}) => {
     const products = useLoaderData()
     return (
         <div>
@@ -14,10 +14,18 @@ const Products = () => {
                             </figure>
                             <div className="card-body items-center text-center">
                                 <h2 className="card-title">{products.name}</h2>
+                                <p>Location: {products.location}</p>
+                                <p>Used Year: {products.used_year}</p>
+                                <p>Orginal Price: {products.orginal_price}</p>
+                                <p>Resale Price: {products.resale_price}</p>
+                                <p>Saller Name: {products.sallerName}</p>
+                                <p>Posted Time: {products.post_date}</p>
                                 <div className="card-actions">
-                                    <Link to={`/products/${products._id}`}>
-                                        <button className="btn btn-primary">Booking</button>
-                                    </Link>
+                                        <label 
+                                        htmlFor="booking-modal" 
+                                        className="btn btn-primary"
+                                        onClick={()=>setProduct(products)}
+                                        >Book Now</label>     
                                 </div>
                             </div>
                         </div>
